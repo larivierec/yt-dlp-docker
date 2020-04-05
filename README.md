@@ -10,7 +10,9 @@ on Windows 10 using docker.
 
 ## Setup instructions
 
-Clone the repo and run build.cmd:
+As a prerequisite you must install [Docker for windows](https://www.docker.com/products/docker-desktop).
+
+Then, clone the repo and run build.cmd:
 
     git clone https://github.com/paviad/youtube-dl-docker.git
     cd youtube-dl-docker
