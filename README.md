@@ -16,6 +16,8 @@ Then, clone the repo and run build.cmd:
 
     git clone https://github.com/paviad/youtube-dl-docker.git
     cd youtube-dl-docker
+    git submodule update --init
+    update
     build
 
 ## Downloading a video
@@ -33,3 +35,11 @@ There is a shortcut batch file that only extracts audio in mp3 format called dla
     dla "<youtube link>"
 
 It simply adds `-x --audio-format mp3` to the command line arguments.
+
+## Pulling the latest youtube-dl version
+
+Just run `update` followed by `build`:
+
+    update
+    build
+    
