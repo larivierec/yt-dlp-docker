@@ -1,7 +1,7 @@
 FROM ubuntu AS build
 RUN apt-get update
 RUN apt-get -y install git make zip python pandoc
-RUN git clone https://github.com/ytdl-org/youtube-dl.git
+COPY ./youtube-dl /youtube-dl
 WORKDIR /youtube-dl
 RUN make
 
