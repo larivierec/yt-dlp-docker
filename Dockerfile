@@ -7,7 +7,9 @@ RUN make
 
 FROM alpine
 COPY --from=build /youtube-dl/youtube-dl /usr/local/bin/youtube-dl
-RUN apk add --update python ffmpeg
+RUN apk add --update --no-cache curl py-pip
+RUN apk add --update ffmpeg
 RUN chmod a+rx /usr/local/bin/youtube-dl
+RUN ln -s /usr/bin/python3 /usr/bin/python
 WORKDIR /mnt
 CMD [ "sh", "-c", "youtube-dl $url" ]
