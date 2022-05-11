@@ -1,8 +1,9 @@
 FROM ubuntu AS build
 RUN apt-get update
-RUN apt-get -y install make zip python pandoc
+RUN apt-get -y install make zip python3 pandoc
 COPY ./youtube-dl /youtube-dl
 WORKDIR /youtube-dl
+RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN make
 
 FROM alpine
