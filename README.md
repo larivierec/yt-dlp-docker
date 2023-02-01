@@ -1,45 +1,41 @@
-# Run latest youtube-dl in docker on Windows 10
+# Thanks
 
-This repo provides a way to run the latest version of [youtube-dl](https://github.com/ytdl-org/youtube-dl)
-on Windows 10 using docker.
+Paviad for his initial version.
+This repo uses python3 alpine images in order to build and execute the `yt-dlp` executable.
+
+# Run latest ytp-dlp in docker
+
+This repo provides a way to run the latest version of [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
 ## Requirements
 
-* Windows 10
-* Docker desktop
+* Docker
 
 ## Setup instructions
 
-As a prerequisite you must install [Docker for windows](https://www.docker.com/products/docker-desktop).
+As a prerequisite you must install [Docker](https://www.docker.com/products/docker-desktop).
 
 Then, clone the repo and run build.cmd:
 
-    git clone https://github.com/paviad/youtube-dl-docker.git
-    cd youtube-dl-docker
+    git clone https://github.com/larivierec/yt-dlp-docker.git
+    cd yt-dlp-docker
     git submodule update --init
-    update
-    build
 
-## Downloading a video
+## Pulling the latest yt-dlp version
 
-Running `dlv.cmd` will simply run youtube-dl and give you the output, you may run `dlv --help` to get command line options.
+You can pull the latest by going in the the submodule directory `yt-dlp` checking out master and pulling.
+Afterwards, rebuild with docker.
 
-To download a video run `dlv.cmd` and surround the url with quotes, e.g.
+## Docker commands
 
-    dlv "<youtube link>"
+To build with docker
 
-The file will be saved in the `out/` directory.
+```bash
+docker build . -t yt-dlp
+```
 
-There is a shortcut batch file that only extracts audio in mp3 format called dla.cmd, usage e.g.
+To download a video use
 
-    dla "<youtube link>"
-
-It simply adds `-x --audio-format mp3` to the command line arguments.
-
-## Pulling the latest youtube-dl version
-
-Just run `update` followed by `build`:
-
-    update
-    build
-    
+```bash
+docker run --rm -it -v %cd%/out:/mnt -e url=%1 y2-dlp
+```
