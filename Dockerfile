@@ -1,4 +1,4 @@
-FROM python:3-alpine AS build
+FROM python:3.8-alpine AS build
 RUN apk update
 RUN apk add make zip pandoc
 COPY ./yt-dlp /youtube-dl
